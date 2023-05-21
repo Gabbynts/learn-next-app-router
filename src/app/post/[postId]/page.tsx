@@ -1,3 +1,4 @@
+import { Metadata } from 'next'
 import React from 'react'
 
 type PostProps={
@@ -15,6 +16,22 @@ export async function generateStaticParams(){
   return posts.map((post)=>({
     postId: post
   }))
+}
+
+type Post = {
+  userId: number
+  id: number
+  title: string
+  body: string
+}
+
+
+export async function generateMetada ({params}:PostProps):Promise<Metadata>{
+  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${params.postId}`)
+  const data = await res.json() as Post
+  return {
+    title: data.title
+  }
 }
 
 const Post = async ({params}:PostProps) => {
