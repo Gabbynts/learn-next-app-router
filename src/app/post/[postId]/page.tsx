@@ -6,6 +6,17 @@ type PostProps={
     }
 }
 
+export async function generateStaticParams(){
+  const posts = [
+    'post-one',
+    'post-two'
+  ]
+
+  return posts.map((post)=>({
+    postId: post
+  }))
+}
+
 const Post = async ({params}:PostProps) => {
 
   console.log(params)

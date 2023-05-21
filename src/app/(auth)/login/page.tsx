@@ -10,11 +10,11 @@ const DashboardPage = async () => {
 
   const { data } = await axios.get('https://jsonplaceholder.typicode.com/posts/1')
 
-  const session = null
+  // const session = null
 
-  if(!session){
-    throw new AuthRequiredError()
-  }
+  // if(!session){
+  //   throw new AuthRequiredError()
+  // }
 
   return (
     <div>
